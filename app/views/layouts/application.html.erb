@@ -11,7 +11,6 @@
 
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
@@ -35,22 +34,32 @@
                 </ul>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
-                    <li class="nav-item bg-warning">
+                    <%# <li class="nav-item bg-warning">
                         <a class="nav-link" href="/contact">Zakat Calculator</a>
+                    </li> %>
+                    <%if(!user_signed_in?)%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/sign_in">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
+                        <a class="nav-link" href="/users/sign_up">Sign up</a>
+                    </li>
+                    <%else%>
+                    <li class="nav-item">
+                        <a class="nav-link text-white">Signed in as: <%= current_user.email%></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/signup">Sign up</a>
+                        <%= link_to  "Sign out", '/users/sign_out', class: "nav-link", method: :delete %>
                     </li>
+                    <%end%>
+
                 </ul>
             </div>
         </div>
     </nav>
     <main class="container">
         <%if(notice)%>
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <div class="alert alert-info alert-dismissible fade show mt-3" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 <span class="sr-only">Close</span>
@@ -58,7 +67,7 @@
             <%= notice %>
         </div>
         <%elsif(alert)%>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 <span class="sr-only">Close</span>
@@ -77,6 +86,9 @@
             </div>
         </div>
     </footer>
+
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
 
 </html>
