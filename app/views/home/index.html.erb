@@ -1,87 +1,55 @@
-<div class="jumbotron bg-success text-light rounded-0">
+<div class="jumbotron bg-dark text-white rounded-0 border-top border-warning">
     <div class="container">
-        <h1 class="display-3">Zakat and Charity Platorm</h1>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure distinctio, nam, accusantium.</p>
-        <hr class="my-2">
-        <p> doloremque aliquid nostrum pariatur corrupti tempore voluptas autem recusandae laboriosam, veniam qui quia? Esse impedit est voluptatum.</p>
+        <h1 class="display-3">Zakat and Charity Platform</h1>
+        <p class="lead">Welcome, this platform helps you know better on Zakat and facilitates the payment process.</p>
+        <hr class="my-2 border brder-light">
+        <p>As one of the Five Pillars of Islam, zakat is a religious duty for all Muslims who meet the necessary criteria of wealth. It is a mandatory charitable contribution, often considered to be a tax.</p>
         <p class="lead">
-            <a class="btn btn-warning btn-lg" href="Jumbo action link" role="button">Zakat Calculator</a>
+            <a class="btn btn-outline-warning btn-lg" href="/about" role="button">Read more</a>
         </p>
     </div>
 </div>
 <div class="container">
-    <div class="card-columns">
+    <div class="card-group">
         <div class="card">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
+            <img class="card-img-top" src="https://navedz.com/wp-content/uploads/2016/06/zakatul-fitr.jpg" alt="">
             <div class="card-body">
-                <h4 class="card-title">Zakatul Fitr</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure distinctio, nam, accusantium. </p>
+                <h4 class="card-title">Zakat al-Fitr</h4>
+                <p class="card-text">This is a charity taken for the poor a few days before the end of fasting in the Islamic holy month of Ramadan. </p>
             </div>
         </div>
-        <div class="card bg-secondary text-white">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
+        <div class="card bg-dark text-white">
+            <img class="card-img-top" src="https://live.staticflickr.com/484/31912924596_ed631d3309_z.jpg" alt="">
             <div class="card-body">
-                <h4 class="card-title">Zakatul Maal</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure distinctio, nam, accusantium.</p>
+                <h4 class="card-title">Zakat al-mal</h4>
+                <p class="card-text">This can be defined as the obligation upon every Muslim man and woman having certain amount of wealth kept for a (lunar) year.</p>
             </div>
         </div>
-        <div class="card bg-info">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
+        <div class="card ">
+            <img class="card-img-top" src="https://image.slidesharecdn.com/is-sadaqah-ppt-180613020500/95/sadaqah-lessons-1-638.jpg?cb=1528855591" alt="">
             <div class="card-body">
-                <h4 class="card-title">Sadaq</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure distinctio, nam, accusantium.</p>
+                <h4 class="card-title">Sadaqah </h4>
+                <p class="card-text">Also known as "voluntary charity". According to the Quran, the word means voluntary offering, whose amount is at the will of the "benefactor"</p>
             </div>
         </div>
+    </div>
+    <%
+        benefs = ["The poor", "The needy","Those in debt","Stranded travelers","For the cause of Allah"]
+    %>
+    <div class="row mt-3">
+        <div class="col-md-12 py-2">
+            <h2 class="text-center display-4">Beneficiaries</h2>
+        </div>
+    </div>
+    <div class="card-deck mt-3">
+        <% benefs.each do |benef|%>
+        <div class="card border-0">
+            <img class="rounded-circle img-fluid" src="https://via.placeholder.com/200.png/343a40/fff?text=Z" alt="">
+            <div class="card-body">
+                <p class="lead text-center"><%=benef %></p>
+            </div>
+        </div>
+        <% end  %>
     </div>
 
-    <div class="card-deck my-3">
-        <div class="card">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Some Benficiary</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure distinctio, nam, accusantium.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Some Benficiary</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure distinctio, nam, accusantium.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Some Benficiary</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure distinctio, nam, accusantium.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Some Benficiary</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure distinctio, nam, accusantium.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Some Benficiary</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure distinctio, nam, accusantium.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="my-4">
-        <h2>Some statistics</h2>
-        <div class="progress my-2">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Orphans helped</div>
-        </div>
-        <div class="progress my-2">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Charity collected</div>
-        </div>
-        <div class="progress my-2">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Operational costs</div>
-        </div>
-    </div>
 </div>
