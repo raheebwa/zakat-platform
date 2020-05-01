@@ -1,19 +1,18 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
-#zakat-calc{
-    li{
+#zakat-calc {
+    li {
         border-radius: 0em;
         border: 0px;
-        a{
+        a {
             border-radius: 0em;
-            color:#ffc107; 
+            color: #28a745;
             border: none;
         }
-        .active{
+        .active {
             color: black;
-            background-color: #ffc107;
+            background-color: #28a745;
         }
     }
 }
