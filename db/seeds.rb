@@ -6,4 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Mosque.create([{name: 'Unknown', location: 'unknown'}])
+Mosque.create([
+  {name: 'Juma Zukuuri', location: 'Kawempe'}, 
+  {name: 'Gadaffi', location: 'Old Kampala' }, 
+  {name: 'Noor', location: 'Kira' }
+  ])
