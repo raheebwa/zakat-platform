@@ -10,4 +10,8 @@ class HomeController < ApplicationController
 
   def calculator
   end
+
+  def my_payments
+    @payments = current_user.payments
+  end
 end

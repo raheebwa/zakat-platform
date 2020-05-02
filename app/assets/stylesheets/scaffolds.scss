@@ -1,0 +1,6 @@
+@import "bootstrap/dist/css/bootstrap";
+table {
+    @extend .table;
+    @extend .table-striped;
+    @extend .table-bordered;
+}
