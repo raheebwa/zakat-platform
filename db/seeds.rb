@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Mosque.create([
-  {name: 'Juma Zukuuri', location: 'Kawempe'}, 
-  {name: 'Gadaffi', location: 'Old Kampala' }, 
-  {name: 'Noor', location: 'Kira' }
-  ])
+                { name: 'Juma Zukuuri', location: 'Kawempe' },
+                { name: 'Gadaffi', location: 'Old Kampala' },
+                { name: 'Noor', location: 'Kira' }
+              ])
