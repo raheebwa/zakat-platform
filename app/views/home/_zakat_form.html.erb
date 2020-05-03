@@ -1,22 +1,167 @@
-<form action="">
-    <div class="form-group">
-        <label for=""></label>
-        <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
-        <small id="emailHelpId" class="form-text text-dark">Help text</small>
+<%= form_with(model: payment, local: true, url: '/pay-zakat', id: 'zakat-calc') do |form| %>
+<% if payment.errors.any? %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div id="error_explanation">
+    <strong><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</strong>
+
+    <ul>
+      <% payment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+<fieldset disabled>
+  <p class="lead">User</p>
+
+  <div class="field"> <%= form.text_field :username, value: current_user.name%>
+    <%= form.hidden_field :user, value: current_user.id %>
+  </div>
+
+  <p class="lead">Current NISAB Value</p>
+
+  <div class="field">
+    <%= form.number_field :current_nisab, value: "1300000" %>
+  </div>
+</fieldset>
+
+<%= form.hidden_field :user_id, value: current_user.id %>
+<%= form.hidden_field :current_nisab, value: "1300000" %>
+
+
+<p class="lead">1. Enter the <i class="fas fa-tachometer-alt-fast    "></i> amount of cash you have including money in your bank account(s).</p>
+
+<div class="field">
+  <%= form.number_field :cash %>
+</div>
+
+<p class="lead">2. If you are owed money and are confident it will be repaid, or you’ve sold something and are due to receive payment, you need to pay Zakat on these amounts.</p>
+
+<div class="field">
+  <%= form.number_field :debit %>
+</div>
+<p class="lead">3. Total Business assets including cash, goods, work in progress, raw materials and outstanding payments which are likely to be paid, are all subject to Zakat.</p>
+
+<div class="field">
+  <%= form.number_field :assets %>
+</div>
+
+<p class="lead">4. Enter total money you owe / bills you are due to pay.</p>
+
+<div class="field">
+  <%= form.number_field :credit %>
+</div>
+
+
+<div class="field">
+  <%= form.hidden_field :zakat_paid %>
+</div>
+<button id="show-calc-review" type="button" class="btn btn-success my-2" data-toggle="modal" data-target="#modelId">
+  Preview Calculation Summary
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">All done!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Here's a summary of the information you've provided and how much Zakat you need to give.</p>
+        <table class="table table-dark table-striped table-bordered">
+          <thead>
+            <tr>
+              <th colspan=2>
+                <h5 class="text-success text-center">Zakatable assets (What you own)</h5>
+              </th>
+            </tr>
+            <tr>
+              <th>Type</th>
+              <th>Value n Ugx</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-success">Total Cash </td>
+              <td id="prev-cash"></td>
+            </tr>
+
+            <tr>
+              <td class="text-success">Those owe me</td>
+              <td id="prev-debit"></td>
+            </tr>
+
+
+            <tr>
+              <td class="text-success">My Business Assets </td>
+              <td id="prev-assets"></td>
+            </tr>
+            <tr>
+              <td colspan=2 class="text-success"><span class="float-right">Sub Total: <em id="prev-total-debit"></em></span></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-dark table-striped table-bordered">
+          <thead>
+            <tr>
+              <th colspan=2>
+                <h5 class="text-danger text-center">Deductible liabilities (What you owe)</h5>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td class="text-danger">Money That I owe </td>
+              <td id="prev-credit"></td>
+            </tr>
+            <tr>
+              <td colspan=2 class="text-danger"><span class="float-right">Sub Total: <em id="prev-total-credit"></em></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-dark table-striped table-bordered">
+          <thead>
+            <tr>
+              <th colspan=2>
+                <h5 class="text-success text-center">Zakat calculation (2.5% of the result)</h5>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-danger"> Current Nisab Value</td>
+              <td id="prev-nisab"></td>
+            </tr>
+            <tr>
+              <td class="text-warning">Total Amount after after Nisab Adjustment</td>
+              <td id="prev-after-nisab"></td>
+            </tr>
+            <tr>
+              <td colspan=2 class="text-success"><span class="float-right">Total Zakat to Pay: <em id="prev-zakat-paid"></em></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <%# <button type="button" class="btn btn-outline-dark btn-lg btn-block">Click me to pay Zakat with with this platform</button> %>
+
+      </div>
+      <div class="modal-footer">
+        <p class="text-muted"><em id="too-low-message"></em></p>
+        <button id="zakat_submit" type="submit" class="btn btn-outline-success btn-block">Pay Zakat Amount</button>
+      </div>
     </div>
-    <div class="form-group">
-        <label for=""></label>
-        <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
-        <small id="emailHelpId" class="form-text text-dark">Help text</small>
-    </div>
-    <div class="form-group">
-        <label for=""></label>
-        <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
-        <small id="emailHelpId" class="form-text text-dark">Help text</small>
-    </div>
-    <div class="form-group">
-        <label for=""></label>
-        <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
-        <small id="emailHelpId" class="form-text text-dark">Help text</small>
-    </div>
-</form>
+  </div>
+</div>
+
+<% end %>
