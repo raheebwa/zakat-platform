@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_action :set_payment, only: [:destroy_payment]
+  before_action :authenticate_user!, only: %i[calculator]
 
   def index
   end
