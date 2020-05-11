@@ -48,5 +48,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Auth
 gem 'devise'
 
-#admin Dash
+# admin Dash
 gem "administrate"

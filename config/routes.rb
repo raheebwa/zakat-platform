@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
-      resources :users
-      resources :payments
-      resources :mosques
+    resources :users
+    resources :payments
+    resources :mosques
 
-      root to: "users#index"
-    end
+    root to: "users#index"
+  end
   resources :payments
   devise_for :users, controllers: {
     registrations: 'users/registrations'

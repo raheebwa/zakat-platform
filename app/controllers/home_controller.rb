@@ -23,7 +23,7 @@ class HomeController < ApplicationController
         format.html { redirect_to "/my-payments", notice: 'Payment was successfully created.' }
         format.json { render :show, status: :created, location: @payment }
       else
-        format.html { render :calculator}
+        format.html { render :calculator }
         format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
     end
@@ -41,13 +41,14 @@ class HomeController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_payment
-      @payment = Payment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def payment_params
-      params.require(:payment).permit(:user_id, :cash, :credit, :debit, :assets, :current_nisab, :zakat_paid)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_payment
+    @payment = Payment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def payment_params
+    params.require(:payment).permit(:user_id, :cash, :credit, :debit, :assets, :current_nisab, :zakat_paid)
+  end
 end
